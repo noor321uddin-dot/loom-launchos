@@ -1,0 +1,6 @@
+node_modules/
+dist/
+out/
+cv-source/
+.DS_Store
+*.log
