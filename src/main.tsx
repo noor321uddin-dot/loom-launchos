@@ -1,5 +1,11 @@
 import React, {useEffect, useLayoutEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client';
+
+// Remotion's staticFile() prefixes window.remotion_staticBase, which a plain Vite
+// build never sets, so under a subpath (GitHub Pages) images resolved from the site
+// root and 404'd. staticFile reads it at render time, so setting it here is enough.
+(window as unknown as {remotion_staticBase: string}).remotion_staticBase =
+  import.meta.env.BASE_URL.replace(/\/$/, '');
 import {Thumbnail} from '@remotion/player';
 import {SLIDES} from './slides';
 import {C, F} from './theme';
